@@ -34,8 +34,8 @@ const validateBarcode = (barcode) => {
   }
 
   if (errorMessages.length > 0) {
-    throw new Error(`Please enter a valid barcode: ${errors.join(", ")}!`);
-  }
+    throw new Error(`Please enter a valid barcode: ${errorMessages.join(", ")}!`);
+  }  
 };
 
 const calculateCheckDigit = (barcode) => {
