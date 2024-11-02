@@ -114,7 +114,7 @@ small {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%;
+    min-width: 280px;
     min-height: 75px;
     font-size: 1.25rem;
     gap: 1rem;
