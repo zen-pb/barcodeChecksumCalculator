@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins';
+    font-weight: 400;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+footer {
+    display: flex;
+    padding: 1vh;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16px;
+    text-align: center;
+
+    a:hover {
+        animation: rotate .5s forwards;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+
+html {
+    font-size: 100%;
+}
+
+/* 16px */
+
+h1 {
+    margin: 3rem 1.5rem;
+    font-size: 4.210rem;
+    /* 67.36px */
+}
+
+h2 {
+    font-size: 3.158rem;
+    /* 50.56px */
+}
+
+h3 {
+    font-size: 2.369rem;
+    /* 37.92px */
+}
+
+h4 {
+    font-size: 1.777rem;
+    /* 28.48px */
+}
+
+h5 {
+    font-size: 1.333rem;
+    /* 21.28px */
+}
+
+small {
+    font-size: 0.750rem;
+    /* 12px */
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+    font-size: 1.25rem;
+    height: 50%;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formula {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    height: 50%;
+}
+
+input,
+button {
+    font-size: 1.25rem;
+}
+
+
+
+.even,
+.odd,
+.lastEven,
+.lastOdd,
+.constant,
+.lastMultiply,
+.lastAdd {
+    font-weight: bolder;
+}
+
+.even {
+    color: #2a3a91;
+
+}
+
+.odd {
+    color: #f1592a;
+
+}
+
+.lastEven {
+    color: #25AAE1;
+}
+
+.lastOdd {
+    color: #FBB040;
+}
+
+.constant {
+    color: #684092;
+}
+
+.lastMultiply {
+    color: #EF557D;
+}
+
+.lastAdd {
+    color: #8C5F3C;
+}
+
+.modulo::after {
+    content: '';
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border: 2px solid #459646;
+    vertical-align: middle;
+}
+
+.checkDigit {
+    color: #459646;
+}
