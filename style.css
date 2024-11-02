@@ -16,8 +16,9 @@ body {
     align-items: center;
     font-family: 'Poppins';
     font-weight: 400;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: space-around;
+    transition: all ease-in-out 500ms;
 }
 
 footer {
@@ -60,7 +61,6 @@ html {
 /* 16px */
 
 h1 {
-    margin: 3rem 1.5rem;
     font-size: 4.210rem;
     /* 67.36px */
 }
@@ -102,6 +102,7 @@ small {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    min-width: 280px;
 }
 
 .formula {
@@ -114,12 +115,17 @@ small {
     flex-direction: column;
     align-items: center;
     width: 25%;
+    min-height: 75px;
+    font-size: 1.25rem;
+    gap: 1rem;
 }
 
 .input {
     display: flex;
+    gap: 0.75rem;
     align-items: center;
     height: 50%;
+    min-width: 280px;
 }
 
 input,
@@ -127,7 +133,10 @@ button {
     font-size: 1.25rem;
 }
 
-
+#answer {
+    min-width: 280px;
+    text-align: center;
+}
 
 .even,
 .odd,
@@ -180,4 +189,45 @@ button {
 
 .checkDigit {
     color: #459646;
+}
+
+@media (width <=420px) {
+
+    .container,
+    .input-box {
+        font-size: 1rem;
+    }
+
+    input,
+    button {
+        font-size: 1rem;
+    }
+}
+
+@media (width <=750px) {
+    h1 {
+        margin: 3rem 1.5rem;
+    }
+
+    .input-box {
+        margin-bottom: 1.5rem;
+    }
+
+    .formula {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (width <=860px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (861px <=width <=1120px) {
+    h1 {
+        font-size: 3.210rem;
+    }
 }
