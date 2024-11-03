@@ -19,6 +19,7 @@ body {
     min-height: 100vh;
     justify-content: space-around;
     transition: all ease-in-out 500ms;
+    background-color: #F4F3F2;
 }
 
 footer {
@@ -144,7 +145,8 @@ button {
 .lastOdd,
 .constant,
 .lastMultiply,
-.lastAdd {
+.lastAdd,
+.checkDigit {
     font-weight: bolder;
 }
 
