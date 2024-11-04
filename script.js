@@ -62,8 +62,7 @@ const calculateCheckDigit = (barcode) => {
   const sumResult =
     (multiplyResult % MODULO_CONSTANT) + (otherSum % MODULO_CONSTANT);
 
-  //Return zero if sumResult is equal 0 and 10, else get the last digit of the sumResult then minus that to 10.
-
+  //checkDigit will be zero if sumResult is equal 0 and 10, else get the last digit of the sumResult then minus that to 10.
   const checkDigit =
     sumResult === 0 || sumResult === 10
       ? 0
