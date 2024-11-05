@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="./script.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <title>Barcode Checksum Calculator</title>
+    <title>Barcode Validator & Checksum Calculator</title>
   </head>
   <body>
-    <h1>Barcode Checksum Calculator</h1>
+    <h1>Barcode Validator & Checksum Calculator</h1>
     <div class="input-box">
       <div class="input">
-        <input id="input" type="text" />
-        <button id="button">Calculate</button>
+        <input id="input" type="number" required />
+        <button id="button" aria-label="Check and validate the barcode">
+          Check and Validate
+        </button>
       </div>
       <p id="answer"></p>
     </div>
@@ -24,7 +26,7 @@
         </p>
         <div class="formula">
           <p>
-            Odd digits (EAN Barcode) <br />
+            Odd digits (EAN-13 Barcode) <br />
             Separate:
             <span class="odd">9</span><span class="even">4</span
             ><span class="odd">0</span><span class="even">0</span
@@ -63,7 +65,7 @@
             <span class="checkDigit">= 9</span>
           </p>
           <p>
-            Even digits (UPC Barcode) <br />
+            Even digits (UPC-A Barcode) <br />
             Separate:
             <span class="odd">7</span><span class="even">5</span
             ><span class="odd">3</span><span class="even">1</span
@@ -100,7 +102,6 @@
           </p>
         </div>
       </div>
-      
     </div>
 
     <footer>
@@ -110,12 +111,7 @@
         zen-pb
       </p>
       <a href="https://github.com/zen-pb" target="_blank">
-        <img
-          src="github-mark.svg"
-          width="35"
-          height="35"
-          alt="github"
-        />
+        <img src="github-mark.svg" width="35" height="35" alt="github" />
       </a>
     </footer>
 
