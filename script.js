@@ -24,21 +24,22 @@ const sumDigits = (barcode, startIndex) => {
 };
 
 const validateBarcode = (barcode) => {
-  let errorMessages = [];
-
-  if (barcode.length !== 11 && barcode.length !== 12) {
-    errorMessages.push("UPC is 11 digits and EAN is 12 digits");
-  }
-
-  if (!/^\d+$/.test(barcode)) {
-    errorMessages.push("Must contain only numerical digits");
-  }
-
-  if (errorMessages.length > 0) {
+  if (barcode.length === 0) {
+    throw new Error("Please enter a barcode!");
+  } else if (
+    barcode.length !== 7 &&
+    barcode.length !== 11 &&
+    barcode.length !== 12 &&
+    barcode.length !== 13
+  ) {
     throw new Error(
-      `Please enter a valid barcode: ${errorMessages.join(", ")}!`
+      "Invalid barcode. This product might be counterfeit, or the company may not have complied with government regulations."
     );
   }
+
+  input.classList.remove("invalid");
+  answer.classList.remove("invalid");
+  input.classList.add("valid");
 };
 
 const calculateCheckDigit = (barcode) => {
@@ -80,14 +81,32 @@ const calculateCheckDigit = (barcode) => {
 };
 
 const outputCalculation = (barcode) => {
-  const isEAN = barcode.length === 12;
-  console.log(isEAN);
+  const isOdd = barcode.length === 12;
+  let barcodeType;
 
-  const span = printSpan(barcode, isEAN);
+  switch (barcode.length) {
+    case 7:
+      barcodeType = "EAN-8";
+      break;
+    case 11:
+      barcodeType = "UPC-A";
+      break;
+    case 12:
+      barcodeType = "EAN-13";
+      break;
+    case 13:
+      barcodeType = "ITF-14";
+      break;
+  }
+
+  const span = printSpan(barcode, isOdd);
 
   return `<p>
-
-  ${isEAN ? "Odd digits (EAN Barcode)" : "Even digits (UPC Barcode)"}
+  ${
+    isOdd
+      ? `Odd digits (${barcodeType} Barcode)`
+      : `Even digits (${barcodeType} Barcode)`
+  }
   <br/>
 
   Separate:
@@ -95,9 +114,9 @@ const outputCalculation = (barcode) => {
   <br /><br />
 
   Operate: <br />
-  ${isEAN ? span.sequenceSumOdd : span.sequenceSumEven}
+  ${isOdd ? span.sequenceSumOdd : span.sequenceSumEven}
   <br />
-  ${isEAN ? span.sequenceSumEven : span.sequenceSumOdd}
+  ${isOdd ? span.sequenceSumEven : span.sequenceSumOdd}
   <br /><br />
 
   Calculate: <br />
@@ -215,5 +234,7 @@ button.addEventListener("click", () => {
       </p>` + outputCalculation(barcode);
   } catch (error) {
     answer.textContent = error.message;
+    answer.classList.add("invalid");
+    input.classList.add("invalid");
   }
 });
