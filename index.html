@@ -3,115 +3,175 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="./script.js"></script>
-    <link rel="stylesheet" href="style.css" />
     <title>Barcode Validator & Checksum Calculator</title>
+    <link rel="stylesheet" href="utils.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./script.js"></script>
   </head>
   <body>
-    <h1>Barcode Validator & Checksum Calculator</h1>
-    <div class="input-box">
-      <div class="input">
-        <input id="input" type="number" required />
-        <button id="button" aria-label="Check and validate the barcode">
-          Check and Validate
-        </button>
-      </div>
-      <p id="answer"></p>
-    </div>
-    <div class="container">
-      <div id="text" class="text">
-        <p class="description">
-          This is a barcode checksum calculator that follows the following
-          formula:
-        </p>
-        <div class="formula">
-          <p>
-            Odd digits (EAN-13 Barcode) <br />
-            Separate:
-            <span class="odd">9</span><span class="even">4</span
-            ><span class="odd">0</span><span class="even">0</span
-            ><span class="odd">5</span><span class="even">4</span
-            ><span class="odd">7</span><span class="even">0</span
-            ><span class="odd">0</span><span class="even">9</span
-            ><span class="odd">8</span><span class="even modulo">7</span>
-            <br /><br />
-            Operate: <br />
-            <span class="odd">9</span> + <span class="odd">0</span> +
-            <span class="odd">5</span> + <span class="odd">7</span> +
-            <span class="odd">0</span> + <span class="odd">8</span> = 2<span
-              class="lastOdd"
-              >9</span
-            >
-            <br />
-            <span class="even">4</span> + <span class="even">0</span> +
-            <span class="even">4</span> + <span class="even">0</span> +
-            <span class="even">9</span> + <span class="even">7</span> = 2<span
-              class="lastEven"
-              >4</span
-            >
-            <br /><br />
-            Calculate: <br />
-            <span class="constant">3</span> x <span class="lastEven">4</span> =
-            1<span class="lastMultiply">2</span>
-            <br />
-            <span class="lastMultiply">2</span> +
-            <span class="lastOdd">9</span> = 1<span class="lastAdd">1</span>
-            <br />
+    <header>
+      <h1>Barcode Validator & Checksum Calculator</h1>
+    </header>
 
-            <span class="modulo"></span> + <span class="lastAdd">1</span> =
-            <span class="constant">10</span> <br />
-
-            <span class="modulo"></span>
-            <span class="checkDigit">= 9</span>
-          </p>
-          <p>
-            Even digits (UPC-A Barcode) <br />
-            Separate:
-            <span class="odd">7</span><span class="even">5</span
-            ><span class="odd">3</span><span class="even">1</span
-            ><span class="odd">8</span><span class="even">2</span
-            ><span class="odd">9</span><span class="even">5</span
-            ><span class="odd">3</span><span class="even">4</span
-            ><span class="odd modulo">2</span> <br /><br />
-            Operate: <br />
-            <span class="even">5</span> + <span class="even">1</span> +
-            <span class="even">2</span> + <span class="even">5</span> +
-            <span class="even">4</span> = 1<span class="lastEven">7</span>
-
-            <br />
-            <span class="odd">7</span> + <span class="odd">3</span> +
-            <span class="odd">8</span> + <span class="odd">9</span> +
-            <span class="odd">3</span> + <span class="odd">2</span> = 3<span
-              class="lastOdd"
-              >2</span
-            >
-            <br /><br />
-            Calculate: <br />
-            <span class="constant">3</span> x <span class="lastOdd">2</span> =
-            <span class="lastMultiply">6</span>
-            <br />
-            <span class="lastMultiply">6</span> +
-            <span class="lastEven">7</span> = 1<span class="lastAdd">3</span>
-            <br />
-
-            <span class="even modulo"></span> + <span class="lastAdd">3</span> =
-            <span class="constant">10</span> <br />
-
-            <span class="even modulo"></span>
-            <span class="checkDigit">= 7</span>
-          </p>
+    <main class="main-grid">
+      <section class="input">
+        <div class="input-box">
+          <input type="number" id="input" required />
+          <button id="button">Check & Validate</button>
         </div>
-      </div>
-    </div>
+        <p id="answer"></p>
+      </section>
+      <section class="barcode-samples">
+        <h2>Sample Barcodes</h2>
+        <hr />
+        <p>Below are sample barcodes available for calculation on this page:</p>
+        <div class="barcode-grid">
+          <div class="barcode-sample">
+            <h3 class="barcodeName">EAN-8 Barcode</h3>
+            <img src="./barcodeImages/ean-8.gif" alt="Sample EAN-8 Barcode" />
+            <p class="barcode-instructions">
+              Enter 7 digits only; the last digit shown is the check digit.
+            </p>
+          </div>
+          <div class="barcode-sample">
+            <h3 class="barcodeName">EAN-13 Barcode</h3>
+            <img src="./barcodeImages/ean-13.gif" alt="Sample EAN-13 Barcode" />
+            <p class="barcode-instructions">
+              Enter 12 digits only; the last digit shown is the check digit.
+            </p>
+          </div>
+          <div class="barcode-sample">
+            <h3 class="barcodeName">UPC-A Barcode</h3>
+            <img src="./barcodeImages/upc-a.gif" alt="Sample UPC-A Barcode" />
+            <p class="barcode-instructions">
+              Enter 11 digits only; the last digit shown is the check digit.
+            </p>
+          </div>
+          <div class="barcode-sample">
+            <h3 class="barcodeName">ITF-14 Barcode</h3>
+            <img src="./barcodeImages/itf-14.png" alt="Sample ITF-14 Barcode" />
+            <p class="barcode-instructions">
+              Enter 13 digits only; the last digit shown is the check digit.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="calculation">
+        <h2>Calculation Formula</h2>
+        <hr />
+        <div id="output">
+          <p class="description">
+            This is a barcode checksum calculator that follows the following
+            formula:
+          </p>
+
+          <div class="formula">
+            <!-- EAN-13 Example -->
+            <div class="formula-example">
+              <h3>Odd digits (EAN-13 Barcode)</h3>
+              <div class="calculation-steps">
+                <p class="step">
+                  <span class="step-label">Separate:</span>
+                  <span class="odd">9</span><span class="even">4</span
+                  ><span class="odd">0</span><span class="even">0</span
+                  ><span class="odd">5</span><span class="even">4</span
+                  ><span class="odd">7</span><span class="even">0</span
+                  ><span class="odd">0</span><span class="even">9</span
+                  ><span class="odd">8</span><span class="even modulo">7</span>
+                </p>
+
+                <p class="step">
+                  <span class="step-label">Operate:</span><br />
+                  <span class="odd">9</span> + <span class="odd">0</span> +
+                  <span class="odd">5</span> + <span class="odd">7</span> +
+                  <span class="odd">0</span> + <span class="odd">8</span> =
+                  2<span class="lastOdd">9</span><br />
+                  <span class="even">4</span> + <span class="even">0</span> +
+                  <span class="even">4</span> + <span class="even">0</span> +
+                  <span class="even">9</span> + <span class="even">7</span> =
+                  2<span class="lastEven">4</span>
+                </p>
+
+                <p class="step">
+                  <span class="step-label">Calculate:</span><br />
+                  <span class="constant">3</span> x
+                  <span class="lastEven">4</span> = 1<span class="lastMultiply"
+                    >2</span
+                  ><br />
+                  <span class="lastMultiply">2</span> +
+                  <span class="lastOdd">9</span> = 1<span class="lastAdd"
+                    >1</span
+                  ><br />
+                  <span class="modulo"></span> +
+                  <span class="lastAdd">1</span> =
+                  <span class="constant">10</span><br />
+                  <span class="modulo"></span
+                  ><span class="checkDigit"> = 9</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- UPC-A Example -->
+            <div class="formula-example">
+              <h3>Even digits (UPC-A Barcode)</h3>
+              <div class="calculation-steps">
+                <p class="step">
+                  <span class="step-label">Separate:</span>
+                  <span class="odd">7</span><span class="even">5</span
+                  ><span class="odd">3</span><span class="even">1</span
+                  ><span class="odd">8</span><span class="even">2</span
+                  ><span class="odd">9</span><span class="even">5</span
+                  ><span class="odd">3</span><span class="even">4</span
+                  ><span class="odd modulo">2</span>
+                </p>
+
+                <p class="step">
+                  <span class="step-label">Operate:</span><br />
+                  <span class="even">5</span> + <span class="even">1</span> +
+                  <span class="even">2</span> + <span class="even">5</span> +
+                  <span class="even">4</span> = 1<span class="lastEven">7</span
+                  ><br />
+                  <span class="odd">7</span> + <span class="odd">3</span> +
+                  <span class="odd">8</span> + <span class="odd">9</span> +
+                  <span class="odd">3</span> + <span class="odd">2</span> =
+                  3<span class="lastOdd">2</span>
+                </p>
+
+                <p class="step">
+                  <span class="step-label">Calculate:</span><br />
+                  <span class="constant">3</span> x
+                  <span class="lastOdd">2</span> =
+                  <span class="lastMultiply">6</span><br />
+                  <span class="lastMultiply">6</span> +
+                  <span class="lastEven">7</span> = 1<span class="lastAdd"
+                    >3</span
+                  ><br />
+                  <span class="even modulo"></span> +
+                  <span class="lastAdd">3</span> =
+                  <span class="constant">10</span><br />
+                  <span class="even modulo"></span
+                  ><span class="checkDigit"> = 7</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
-      <p>
-        Copyright ©
-        <span id="currentYear"></span>
-        zen-pb
-      </p>
-      <a href="https://github.com/zen-pb" target="_blank">
-        <img src="github-mark.svg" width="35" height="35" alt="github" />
+      <p>Copyright © <span id="currentYear"></span> zen-pb</p>
+      <a
+        href="https://github.com/zen-pb"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="github-mark.svg"
+          width="35"
+          height="35"
+          alt="GitHub Profile"
+        />
       </a>
     </footer>
 
