@@ -179,7 +179,10 @@ const printSpan = (barcode, whatBarcode) => {
       .map((digit, index) =>
         index % 2 === 0
           ? `<span class="odd">${digit}</span>${
-              index === barcodeChar.length - 2 ? " = " : " + "
+              index === barcodeChar.length - 1 ||
+              index === barcodeChar.length - 2
+                ? " = "
+                : " + "
             }`
           : ""
       )
