@@ -204,13 +204,13 @@ const printSpan = (barcode, whatBarcode) => {
   let lastSumOdd = result.oddSum.toString().slice(-1);
   let lastSumResult = result.sumResult.toString().slice(-1);
 
-  let multiplySequence = `<span class="constant">3</span> x <span class="lastEven">${
-    whatBarcode ? lastSumEven : lastSumOdd
-  }</span> = ${multiplyResult}`;
+  let multiplySequence = `<span class="constant">3</span> x <span class="${
+    whatBarcode ? "lastEven" : "lastOdd"
+  }">${whatBarcode ? lastSumEven : lastSumOdd}</span> = ${multiplyResult}`;
 
-  let sumSequence = `<span class="lastMultiply">${lastMultiplyResult}</span> + <span class="lastOdd">${
-    whatBarcode ? lastSumOdd : lastSumEven
-  }</span> = ${sumResult}`;
+  let sumSequence = `<span class="lastMultiply">${lastMultiplyResult}</span> + <span class="${
+    whatBarcode ? "lastOdd" : "lastEven"
+  }">${whatBarcode ? lastSumOdd : lastSumEven}</span> = ${sumResult}`;
 
   let moduloSequence = `<span class="modulo"></span> + <span class="lastAdd">${lastSumResult}</span> = <span class="constant">10</span>`;
 
