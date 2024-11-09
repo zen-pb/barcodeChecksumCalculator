@@ -1,7 +1,7 @@
 const input = document.getElementById("input");
 const button = document.getElementById("button");
 const answer = document.getElementById("answer");
-const text = document.getElementById("text");
+const output = document.getElementById("output");
 
 //Constants
 const MULTIPLIER = 3;
@@ -99,37 +99,43 @@ const outputCalculation = (barcode) => {
       break;
   }
 
+  const whatBarcode = isOdd
+    ? `Odd digits (${barcodeType} Barcode)`
+    : `Even digits (${barcodeType} Barcode)`;
+
   const span = printSpan(barcode, isOdd);
 
-  return `<p>
-  ${
-    isOdd
-      ? `Odd digits (${barcodeType} Barcode)`
-      : `Even digits (${barcodeType} Barcode)`
-  }
-  <br/>
+  return `
+  <p class="description">This is the process to arrive at the check digit: </p>
 
-  Separate:
+  <div class="formula-example">
+  <h3>${whatBarcode}</h3>
+  <div class="calculation-steps">
+  
+  <p class="step">
+  <span class="step-label">Separate:</span>
   ${span.sequenceSum}  
-  <br /><br />
+  </p>
 
-  Operate: <br />
+  <p class="step">
+  <span class="step-label">Operate:</span><br />
   ${isOdd ? span.sequenceSumOdd : span.sequenceSumEven}
   <br />
   ${isOdd ? span.sequenceSumEven : span.sequenceSumOdd}
-  <br /><br />
+  </p>
 
-  Calculate: <br />
+  <p class="step">
+  <span class="step-label">Calculate:</span><br /> 
   ${span.multiplySequence}
   <br />
   ${span.sumSequence}
   <br />
-
   ${span.moduloSequence}
-<br />
-
-${span.checkDigit}
-  </p>`;
+  <br />
+  ${span.checkDigit}
+  </p>
+</div>
+</div>`;
 };
 
 const printSpan = (barcode, whatBarcode) => {
@@ -228,13 +234,14 @@ button.addEventListener("click", () => {
 
     answer.textContent = `Barcode Check Digit: ${result.checkDigit}`;
 
-    text.innerHTML =
-      `<p class="description">
-        This is the process to arrive at the check digit:
-      </p>` + outputCalculation(barcode);
+    output.innerHTML = outputCalculation(barcode);
   } catch (error) {
     answer.textContent = error.message;
     answer.classList.add("invalid");
     input.classList.add("invalid");
   }
+});
+
+input.addEventListener("keypress", () => {
+  input.classList.remove("valid");
 });
