@@ -1,0 +1,104 @@
+/* Typography */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
+
+/* CSS Reset & Base Styles */
+:root {
+  --font-primary: 'Poppins', sans-serif;
+  --color-background: #F4F3F2;
+  --transition-standard: all 500ms ease-in-out;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-base: 1rem;     /* 16px */
+  --text-h5: 1.333rem;   /* 21.28px */
+  --text-h4: 1.777rem;   /* 28.48px */
+  --text-h3: 2.369rem;   /* 37.92px */
+  --text-h2: 3.158rem;   /* 50.56px */
+  --text-h1: 4.21rem;    /* 67.36px */
+}
+
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Styles */
+html {
+  font-size: 100%; /* 16px */
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+    margin: 2rem;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  background-color: var(--color-background);
+  transition: var(--transition-standard);
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+h4 { font-size: var(--text-h4); }
+h5 { font-size: var(--text-h5); }
+small { font-size: var(--text-xs); }
+
+/* Footer Styles */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1vh;
+  font-size: var(--text-base);
+  text-align: center;
+}
+
+footer a {
+  transition: var(--transition-standard);
+}
+
+footer a:hover {
+  animation: rotate 500ms forwards;
+}
+
+/* Animations */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  :root {
+    /* Adjust font sizes for mobile */
+    --text-h1: 3rem;
+    --text-h2: 2.5rem;
+    --text-h3: 2rem;
+    --text-h4: 1.5rem;
+    --text-h5: 1.25rem;
+  }
+}
