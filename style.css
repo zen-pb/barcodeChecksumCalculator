@@ -1,94 +1,68 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+.main-grid {
+    width: clamp(280px, 100%, 1400px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-rows: 165px 1fr;
+    column-gap: 3rem;
 }
 
-* {
-    margin: 0
+.barcode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
 }
 
-body {
+.barcode-sample {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Poppins';
-    font-weight: 400;
-    min-height: 100vh;
-    justify-content: space-around;
-    transition: all ease-in-out 500ms;
-    background-color: #F4F3F2;
+    text-align: center;
+    width: 280px;
 }
 
-footer {
+.barcode-sample:hover {
+    transform: translateY(-4px);
+}
+
+.barcode-sample img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.barcode-sample h3 {
+    font-size: 1.5rem;
+}
+
+.barcode-instructions {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 1rem;
+}
+
+.input {
     display: flex;
-    padding: 1vh;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    font-size: 16px;
+    gap: 1rem;
+}
+
+.input-box>*,
+#answer {
+    font-size: 1.16rem;
+}
+
+#answer {
+    height: 55px;
     text-align: center;
-
-    a:hover {
-        animation: rotate .5s forwards;
-    }
-}
-
-@keyframes rotate {
-    0% {
-        rotate: 0deg;
-    }
-
-    100% {
-        rotate: 360deg;
-    }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-family: 'Poppins';
-    font-weight: 700;
-}
-
-html {
-    font-size: 100%;
-}
-
-/* 16px */
-
-h1 {
-    font-size: 4.210rem;
-    /* 67.36px */
-}
-
-h2 {
-    font-size: 3.158rem;
-    /* 50.56px */
-}
-
-h3 {
-    font-size: 2.369rem;
-    /* 37.92px */
-}
-
-h4 {
-    font-size: 1.777rem;
-    /* 28.48px */
-}
-
-h5 {
-    font-size: 1.333rem;
-    /* 21.28px */
-}
-
-small {
-    font-size: 0.750rem;
-    /* 12px */
 }
 
 .valid {
@@ -96,7 +70,7 @@ small {
 }
 
 input.valid {
-    color: black;
+    color: #28a745;
     border: 1px solid #28a745;
     box-shadow: 0px 7px 14px -7px #28a745;
 }
@@ -119,52 +93,21 @@ input.invalid:focus {
     outline: 1px solid #dc3545;
 }
 
-.container {
-    display: flex;
-    justify-content: space-around;
-    width: 75%;
-    font-size: 1.25rem;
-    height: 50%;
+.barcode-samples {
+    grid-row: 2;
 }
 
-.text {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    min-width: 280px;
+.calculation {
+    grid-row: span 2;
 }
 
-.formula {
-    display: flex;
-    justify-content: space-between;
+.formula-example {
+    margin-top: 1rem;
 }
 
-.input-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 280px;
-    min-height: 75px;
-    font-size: 1.25rem;
-    gap: 1rem;
-}
-
-.input {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    height: 50%;
-    min-width: 280px;
-}
-
-input,
-button {
-    font-size: 1.25rem;
-}
-
-#answer {
-    min-width: 280px;
-    text-align: center;
+.step {
+    margin-top: 0.5rem;
+    font-size: 1.16rem;
 }
 
 .even,
@@ -180,12 +123,10 @@ button {
 
 .even {
     color: #2a3a91;
-
 }
 
 .odd {
     color: #f1592a;
-
 }
 
 .lastEven {
@@ -208,6 +149,10 @@ button {
     color: #8C5F3C;
 }
 
+.checkDigit {
+    color: #459646;
+}
+
 .modulo::after {
     content: '';
     display: inline-block;
@@ -215,49 +160,4 @@ button {
     height: 23px;
     border: 2px solid #459646;
     vertical-align: middle;
-}
-
-.checkDigit {
-    color: #459646;
-}
-
-@media (width <=420px) {
-
-    .container,
-    .input-box {
-        font-size: 1rem;
-    }
-
-    input,
-    button {
-        font-size: 1rem;
-    }
-}
-
-@media (width <=750px) {
-    h1 {
-        margin: 3rem 1.5rem;
-    }
-
-    .input-box {
-        margin-bottom: 1.5rem;
-    }
-
-    .formula {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-
-@media (width <=860px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-}
-
-@media (861px <=width <=1120px) {
-    h1 {
-        font-size: 3.210rem;
-    }
 }
