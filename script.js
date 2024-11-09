@@ -177,27 +177,22 @@ const printSpan = (barcode, whatBarcode) => {
   let sequenceSumOdd =
     barcodeChar
       .map((digit, index) =>
-        index % 2 === 0
-          ? `<span class="odd">${digit}</span>${
-              index === barcodeChar.length - 1 ||
-              index === barcodeChar.length - 2
-                ? " = "
-                : " + "
-            }`
-          : ""
+        index % 2 === 0 ? `<span class="odd">${digit}</span>` : ""
       )
-      .join("") + sumOdd;
+      .filter(Boolean)
+      .join(" + ") +
+    " = " +
+    sumOdd;
 
   let sequenceSumEven =
     barcodeChar
       .map((digit, index) =>
-        index % 2 !== 0
-          ? `<span class="even">${digit}</span>${
-              index === barcodeChar.length - 1 ? " = " : " + "
-            }`
-          : ""
+        index % 2 !== 0 ? `<span class="even">${digit}</span>` : ""
       )
-      .join("") + sumEven;
+      .filter(Boolean)
+      .join(" + ") +
+    " = " +
+    sumEven;
 
   let lastMultiplyResult = result.multiplyResult.toString().slice(-1);
   let lastSumEven = result.evenSum.toString().slice(-1);
